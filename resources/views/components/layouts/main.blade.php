@@ -11,15 +11,15 @@
 <body>
 
 <div class="flex flex-col min-h-screen">
-    <!-- Navbar -->
 
-    <x-partials.nav />
+    <x-partials.nav/>
 
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6">
         {{$slot}}
     </main>
 
-   <x-partials.footer />
+    <x-partials.footer/>
+</div>
 </body>
 </html>
