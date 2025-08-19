@@ -25,3 +25,7 @@ Route::get('/register', function () {
 Route::get('/', function () {
     return view('dashboard.index');
 })->name('dashboard');
+
+Route::get('test', function () {
+   return view('test');
+});
