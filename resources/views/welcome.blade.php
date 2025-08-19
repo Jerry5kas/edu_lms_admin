@@ -1,4 +1,5 @@
-<x-layouts.app>
+<x-layouts.main>
+
     <h1 class="text-3xl font-bold underline"> This is welcome </h1>
     <div class="bg-red-500">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias beatae distinctio est explicabo in
@@ -6,4 +7,5 @@
             dignissimos ea minus!
         </p>
     </div>
-</x-layouts.app>
+
+</x-layouts.main>
