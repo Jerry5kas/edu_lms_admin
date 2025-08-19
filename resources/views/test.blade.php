@@ -177,7 +177,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias beatae distinc
     </div>
 
 
-    <div class="bg-gray-50 flex items-center justify-center min-h-screen p-4" >
+    <div class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
 
     <!-- Course Card -->
     <div class="max-w-sm w-full bg-white rounded-2xl shadow p-4 flex flex-col">
