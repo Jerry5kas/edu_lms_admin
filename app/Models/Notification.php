@@ -46,13 +46,13 @@ class Notification extends DatabaseNotification
 
     /** 🔗 Relationships */
 
-    // The user/admin who will receive this notification
+    // The user/dashboard who will receive this notification
     public function notifiable()
     {
         return $this->morphTo();
     }
 
-    // The user/admin who created/sent this notification
+    // The user/dashboard who created/sent this notification
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');

@@ -1,5 +1,3 @@
-<footer class="bg-gray-900 text-white py-4">
-    <div class="text-center">
-        <p>© 2025 MySite. All rights reserved.</p>
-    </div>
+<footer class="bg-gray-100 border-t p-4 text-center text-sm text-gray-500">
+    © 2024 Edmate. All rights reserved.
 </footer>

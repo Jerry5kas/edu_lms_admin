@@ -99,7 +99,7 @@ A comprehensive administration panel for your Learning Management System built w
 
 7. **Create admin user**
    ```bash
-   php artisan make:admin
+   php artisan make:dashboard
    ```
 
 8. **Register middleware**
@@ -107,7 +107,7 @@ A comprehensive administration panel for your Learning Management System built w
    ```php
    protected $routeMiddleware = [
        // ... other middlewares
-       'admin' => \App\Http\Middleware\AdminMiddleware::class,
+       'dashboard' => \App\Http\Middleware\AdminMiddleware::class,
    ];
    ```
 
@@ -133,7 +133,7 @@ Then modify the `isAdmin()` method in the middleware to use roles:
 ```php
 private function isAdmin($user)
 {
-    return $user->hasRole('admin');
+    return $user->hasRole('dashboard');
 }
 ```
 
