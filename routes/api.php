@@ -19,8 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 //
-//Route::middleware(['rate.limit:100,minute'])->group(function () {
+//Route::middleware(['api.client', 'rate.limit:100,minute'])->group(function () {
 //    Route::get('/courses', [\App\Http\Controllers\Api\CourseController::class, 'index']);
 //    Route::get('/orders', [\App\Http\Controllers\Api\OrderController::class, 'index']);
 //});
