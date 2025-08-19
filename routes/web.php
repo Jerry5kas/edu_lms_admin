@@ -26,6 +26,6 @@ Route::get('/', function () {
     return view('dashboard.index');
 })->name('dashboard');
 
-Route::get('test', function () {
+Route::get('test', function ()  {
    return view('test');
 });
