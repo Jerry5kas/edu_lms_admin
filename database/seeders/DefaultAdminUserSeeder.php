@@ -10,7 +10,7 @@ class DefaultAdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ensure admin role exists (from RolesAndPermissionsSeeder)
+        // Ensure dashboard role exists (from RolesAndPermissionsSeeder)
         $adminRole = \Spatie\Permission\Models\Role::where('name', 'Admin')->first();
 
         if (! $adminRole) {
@@ -18,9 +18,9 @@ class DefaultAdminUserSeeder extends Seeder
             return;
         }
 
-        // Create default admin user
+        // Create default dashboard user
         $admin = User::firstOrCreate(
-            ['email' => 'admin@edulearn.local'],
+            ['email' => 'dashboard@edulearn.local'],
             [
                 'uuid' => \Illuminate\Support\Str::uuid(),
                 'name' => 'Super Admin',

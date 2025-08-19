@@ -9,12 +9,12 @@ class RegisterController extends Controller
 {
     public function create()
     {
-        return view('admin.register'); // resources/views/admin/register.blade.php
+        return view('dashboard.register'); // resources/views/dashboard/register.blade.php
     }
 
     public function store(Request $request)
     {
         // handle registration logic
-        return redirect()->route('admin.register');
+        return redirect()->route('dashboard.register');
     }
 }

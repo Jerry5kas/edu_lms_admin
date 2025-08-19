@@ -26,7 +26,7 @@ trait LogsAdminActions
     {
         $admin = Auth::user();
 
-        // Only log if an admin is logged in
+        // Only log if an dashboard is logged in
         if (!$admin || !$admin->hasRole('Admin')) {
             return;
         }

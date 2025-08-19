@@ -15,7 +15,7 @@ return new class extends Migration
             // Laravel default
             $table->uuid('id')->primary();
             $table->string('type'); // Notification class name
-            $table->morphs('notifiable'); // user / admin / etc
+            $table->morphs('notifiable'); // user / dashboard / etc
             $table->text('data'); // payload
             $table->timestamp('read_at')->nullable();
 
@@ -40,7 +40,7 @@ return new class extends Migration
             $table->foreignUuid('announcement_id')
                 ->constrained('notifications')
                 ->cascadeOnDelete();
-            $table->enum('role', ['student','admin','instructor'])->nullable();
+            $table->enum('role', ['student','dashboard','instructor'])->nullable();
             $table->json('segment_json')->nullable(); // advanced targeting rules
             $table->timestamps();
         });

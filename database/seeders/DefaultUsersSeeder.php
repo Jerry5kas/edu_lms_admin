@@ -25,7 +25,7 @@ class DefaultUsersSeeder extends Seeder
 
         // Default Admin
         $admin = User::firstOrCreate(
-            ['email' => 'admin@edulearn.local'],
+            ['email' => 'dashboard@edulearn.local'],
             [
                 'uuid' => Str::uuid(),
                 'name' => 'Super Admin',
@@ -66,7 +66,7 @@ class DefaultUsersSeeder extends Seeder
         $student->assignRole('Student');
 
         $this->command->info("✅ Default users created:");
-        $this->command->info("   Admin: admin@edulearn.local / password");
+        $this->command->info("   Admin: dashboard@edulearn.local / password");
         $this->command->info("   Instructor: instructor@edulearn.local / password");
         $this->command->info("   Student: student@edulearn.local / password");
     }
