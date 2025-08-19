@@ -40,7 +40,7 @@
         <p class="text-gray-600 text-base mb-6">Please sign in to your account and start the adventure</p>
 
         <!-- Login Form -->
-        <form action="" method="" class="space-y-4">
+        <form action="{{ route('login.post') }}" method="post" class="space-y-4">
             @csrf
 
             <!-- Email or Username -->
@@ -104,11 +104,9 @@
             </div>
 
             <!-- Submit Button -->
-            <a href="{{route('dashboard')}}">
-                <button type=""
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition text-base">
-                    Sign In
-                </button>
+            <a href="{{ route('dashboard.index') }}"
+               class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition text-base text-center block">
+                Sign In
             </a>
         </form>
 
@@ -118,6 +116,5 @@
         </p>
     </div>
 </div>
-
 </body>
 </html>
