@@ -33,13 +33,4 @@ Route::get('/test', function () {
     return view('test');
 });
 
-// Test authentication route
-Route::get('/test-auth', function () {
-    if (auth()->check()) {
-        return response()->json([
-            'authenticated' => true,
-            'user' => auth()->user()->only(['id', 'name', 'email'])
-        ]);
-    }
-    return response()->json(['authenticated' => false]);
-})->middleware('auth');
+
