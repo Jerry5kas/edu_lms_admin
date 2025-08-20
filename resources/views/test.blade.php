@@ -1,21 +1,5 @@
 
 <x-layouts.main>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-    <!-- Page Title -->
-    <h1 class="text-3xl font-bold underline mb-6">This is welcome</h1>
-
-    <!-- Red Info Section -->
-    <div class="bg-red-500 p-6 rounded-lg mb-8">
-        <p class="text-white text-sm">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias beatae distinctio est explicabo in
-            laudantium nisi officiis, praesentium quos sapiente tempore, ullam vitae voluptatem voluptatibus? Aperiam
-    dignissimos ea minus!
-        </p>
-    </div>
 
     <!-- Dashboard Cards Section -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -64,6 +48,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias beatae distinc
         </div>
 
     </div>
+
     <div class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
 
     <div x-data="studyStats()" x-init="initChart()" class="w-full max-w-4xl bg-white rounded-2xl shadow p-5">
