@@ -13,7 +13,7 @@
 
     <!-- Left Side Image -->
     <div class="hidden md:flex w-1/2 bg-gray-100 items-center justify-center">
-        <img src="your-image.svg" alt="Illustration" class="w-3/4 h-auto">
+        <img src="{{ asset('images/sigin.png') }}" alt="Illustration" class="w-3/4 h-auto">
     </div>
 
     <!-- Right Side Form -->
@@ -39,10 +39,19 @@
         </h2>
         <p class="text-gray-600 text-base mb-6">Please sign in to your account and start the adventure</p>
 
+        @if($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <!-- Login Form -->
         <form action="{{ route('login.post') }}" method="post" class="space-y-4">
             @csrf
-
             <!-- Email or Username -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Email or Username</label>
@@ -55,7 +64,7 @@
                                   d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                     </span>
-                    <input type="text" name="username" placeholder="Type your username" required
+                    <input type="text" name="email" placeholder="Type your username" required
                            class="w-full pl-10 pr-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-gray-400 text-gray-800 text-sm sm:text-base"/>
                 </div>
             </div>
@@ -97,17 +106,17 @@
             <!-- Remember + Forgot -->
             <div class="flex items-center justify-between text-sm">
                 <label class="flex items-center space-x-2 text-gray-600">
-                    <input type="checkbox" class="rounded border-gray-300">
+                    <input type="checkbox" name="remember" class="rounded border-gray-300">
                     <span>Remember Me</span>
                 </label>
                 <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a>
             </div>
 
             <!-- Submit Button -->
-            <a href="{{ route('dashboard.index') }}"
-               class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition text-base text-center block">
+            <button type="submit"
+               class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition text-base">
                 Sign In
-            </a>
+            </button>
         </form>
 
         <!-- Create Account -->

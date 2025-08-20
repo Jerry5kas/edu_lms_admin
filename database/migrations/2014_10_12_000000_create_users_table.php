@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('phone_e164', 20)->unique()->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('remember_token')->nullable();
             $table->string('locale', 10)->default('de_DE');
             $table->string('timezone', 64)->default('Europe/Berlin');
             $table->char('country_code', 2)->default('DE');

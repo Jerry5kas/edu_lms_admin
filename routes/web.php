@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\WebAuthController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +19,18 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/',[AuthController::class,'showlogin'])->name('login');
-Route::post('/login',[AuthController::class,'login'])->name('login.post');
-Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
-Route::get('/dashboard', [AuthController::class,'dashboard'])->name('dashboard.index');
+Route::get('/',[WebAuthController::class,'showLogin'])->name('login');
+Route::post('/login',[WebAuthController::class,'login'])->name('login.post');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('logout', [WebAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
+});
 
 Route::get('auth/login', [SocialAuthController::class, 'redirectToGoogle'])->name('login');
 Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
 Route::get('/test', function () {
     return view('test');
 });
+
+
