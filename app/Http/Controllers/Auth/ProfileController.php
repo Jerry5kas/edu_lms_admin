@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        return view('auth.profile.edit'); // we are using Auth::user() directly in Blade
+        return view('auth.profile.edit');
     }
 
     public function update(Request $request)
