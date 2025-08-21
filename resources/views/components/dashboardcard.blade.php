@@ -26,6 +26,64 @@
 <!-- App root -->
 <div x-data="app()" x-init="init()" x-cloak class="min-h-screen">
 
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <!-- Logo -->
+                    <div class="flex items-center gap-2">
+                        <div class="bg-indigo-600 text-white rounded-full p-2">
+                            <!-- Heroicon: academic-cap -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/>
+                            </svg>
+                        </div>
+                        <span class="font-semibold">EduDash</span>
+                    </div>
+
+                    <!-- Nav Links -->
+                    <div class="hidden sm:flex items-center gap-2">
+                        <button @click="view='home'"
+                                :class="view==='home'? 'text-indigo-600 font-semibold' : 'text-gray-600'"
+                                class="px-3 py-2 rounded-md">Home
+                        </button>
+
+                        <button @click="openDashboard()"
+                                :class="view==='dashboard'? 'text-indigo-600 font-semibold' : 'text-gray-600'"
+                                class="px-3 py-2 rounded-md inline-flex items-center gap-2">
+                            <!-- Heroicon: chart-bar -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 17v-6h2v6H9zm4 0V7h2v10h-2zM5 17V9h2v8H5zM17 17v-4h2v4h-2z"/>
+                            </svg>
+                            Dashboard
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right side (mobile menu placeholder / profile) -->
+                <div class="flex items-center gap-3">
+                    <button class="p-2 rounded-md hover:bg-gray-50">
+                        <!-- Heroicon: bell -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-600" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5-5.917V4a2 2 0 10-4 0v1.083A6 6 0 004 11v3.159c0 .538-.214 1.055-.595 1.436L2 17h5m7 0a3 3 0 11-6 0h6z"/>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="me"
+                             class="w-8 h-8 rounded-full border-2 border-indigo-500">
+                        <span class="hidden sm:inline-block text-sm">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- MAIN -->
     <main class="max-w-7xl mx-auto p-4">
@@ -33,23 +91,25 @@
         <!-- HOME VIEW (simple call-to-action) -->
         <section x-show="view==='home'" x-transition class="space-y-6">
             <div class="bg-white rounded-2xl shadow p-6">
-                <h1 class="text-xl font-bold">Welcome back 👋</h1>
-                <div class="flex items-center space-x-3 p-4 border-b">
-                    <div>
-                        <h2 class="text-lg font-semibold text-gray-800">
-                            {{ Auth::check() ? Auth::user()->name : 'Guest' }}
-                        </h2>
-                        <p class="text-xs text-gray-500">
-                            {{ Auth::user()->email ?? '' }}
-                        </p>
-                    </div>
-                </div>
+                <h1 class="text-lg font-bold">Welcome back 👋</h1>
+                <p class="text-sm text-gray-600 mt-1">Click <span
+                            class="inline-flex items-center gap-1 text-indigo-600 font-medium">Dashboard
+                        <!-- mini chart icon -->
+             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="M3 17v-2a4 4 0 014-4h4a4 4 0 014 4v2M3 7v2a4 4 0 004 4h4a4 4 0 004-4V7"/>
+             </svg>
+          </span> to open analytics.
+                </p>
 
                 <div class="mt-4 flex gap-3">
                     <button @click="openDashboard()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">Open
                         Dashboard
                     </button>
-
+                    <button @click="openDashboard(); $nextTick(()=> scrollToSection('student'))"
+                            class="px-4 py-2 border rounded-lg">Open & jump to Student
+                    </button>
                 </div>
             </div>
         </section>
@@ -217,8 +277,7 @@
                     <div class="bg-yellow-500 p-3 rounded-full text-white">
                         <!-- Heroicon: star -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.449a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.54 1.118l-3.37-2.449a1 1 0 00-1.175 0l-3.37 2.449c-.785.57-1.84-.197-1.54-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.07 9.382c-.783-.57-.38-1.81.588-1.81h4.163a1 1 0 00.95-.69l1.286-3.955z"/>
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.449a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.54 1.118l-3.37-2.449a1 1 0 00-1.175 0l-3.37 2.449c-.785.57-1.84-.197-1.54-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.07 9.382c-.783-.57-.38-1.81.588-1.81h4.163a1 1 0 00.95-.69l1.286-3.955z"/>
                         </svg>
                     </div>
                 </div>

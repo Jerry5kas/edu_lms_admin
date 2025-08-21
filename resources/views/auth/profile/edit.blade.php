@@ -16,7 +16,7 @@
                     </h2>
 
                     <!-- Upload Profile Pic -->
-                    <form action="{{ route('auth.profile.edit') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('auth.profile.update') }}" method="POST" enctype="multipart/form-data"
                           class="flex items-center space-x-2 mt-2">
                         @csrf
                         <label class="cursor-pointer flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full shadow-sm transition">
@@ -37,7 +37,7 @@
                         {{ Auth::check() ? Auth::user()->name : 'Guest' }}
                     </h2>
                     <p class="text-gray-500 mt-1 text-sm">
-                        Joined Unacademy in {{ date('Y') }}
+                        Joined  in {{ date('Y') }}
                     </p>
 
                     <!-- Stats -->
@@ -77,8 +77,41 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
+            <!-- 🚀 Profile Edit Section -->
+            <div x-data="{ preview: null }" class="mt-10 border-t pt-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Edit Profile</h3>
+                <form action="{{ route('auth.profile.update') }}" method="POST" enctype="multipart/form-data">
+
+                @csrf
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" name="name" value="{{ Auth::user()->name ?? '' }}"
+                               class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" name="email" value="{{ Auth::user()->email ?? '' }}"
+                               class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end mt-2">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow flex items-center space-x-2">
+                            <!-- Heroicon: Check -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                            <a href="/dashboard">Save Changes</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </x-layouts.main>

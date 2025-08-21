@@ -1,4 +1,4 @@
-<div class="flex items-center justify-between px-4 py-3 bg-white border-b" x-data="{ sidebarOpen: false }">
+<div class=" flex items-center justify-between px-4 py-3 bg-white border-b" x-data="{ sidebarOpen: false }">
     <!-- Left -->
     <button class="lg:hidden p-2 rounded-md bg-gray-100" @click="sidebarOpen = true">
         <!-- Heroicon Menu -->
@@ -25,6 +25,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
             </button>
+
 
             <!-- Dropdown -->
             <div
@@ -64,7 +65,12 @@
                 @click="open = !open"
                 class="flex items-center space-x-2 rounded-full focus:outline-none"
             >
-                <img class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" alt="User">
+                <img src="{{ Auth::check() && Auth::user()->profile
+                        ? asset('storage/profile_images/' . Auth::user()->profile)
+                        : asset('images/default-profile.png') }}"
+                     alt="Profile"
+                     class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" />
+{{--                <img class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" alt="User">--}}
             </button>
 
             <!-- Dropdown -->
@@ -76,10 +82,22 @@
             >
                 <!-- User Info -->
                 <div class="flex items-center space-x-3 p-4 border-b">
-                    <img class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" alt="User">
+                    <img src="{{ Auth::check() && Auth::user()->profile
+                        ? asset('storage/profile_images/' . Auth::user()->profile)
+                        : asset('images/default-profile.png') }}"
+                         alt="Profile"
+                         class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" />
+{{--                    <img class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" alt="User">--}}
                     <div>
-                        <h2 class="text-sm font-semibold text-gray-800">Michel John</h2>
-                        <p class="text-xs text-gray-500">examplemail@mail.com</p>
+                        <h2 class="text-sm font-semibold text-gray-800">
+                                {{ Auth::check() ? Auth::user()->name : 'Guest' }}
+                            </h2>
+                        <p class="text-xs text-gray-500">
+
+                           {{ Auth::user()->email ?? '' }}
+
+
+                        </p>
                     </div>
                 </div>
 
@@ -88,6 +106,7 @@
                     <li>
                         <a href="/profile/edit" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100">
                             <!-- User Icon -->
+                            <img src="" alt="">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5a8.25 8.25 0 1115 0" />

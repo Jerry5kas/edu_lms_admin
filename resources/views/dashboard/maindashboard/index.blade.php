@@ -2,6 +2,5 @@
 
 @section('content')
 
-    <x-partials.main/>
-
+    <x-dashboardcard/>
 @endsection
