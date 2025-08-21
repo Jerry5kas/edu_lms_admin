@@ -3,6 +3,10 @@
 use App\Http\Controllers\Auth\WebAuthController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Dashboard\StudentCourseController;
+use App\Http\Controllers\Dashboard\InstructorCourseController;
+use App\Http\Controllers\Dashboard\DashboardcardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +22,6 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-
-
-use App\Http\Controllers\Auth\ProfileController;
-use App\Http\Controllers\Dashboard\StudentCourseController;
-use App\Http\Controllers\Dashboard\InstructorCourseController;
-use App\Http\Controllers\Dashboard\DashboardcardController;
-
 Route::middleware(['auth']) // keep if your dashboard is protected
 ->prefix('dashboard')
     ->name('dashboard.')
@@ -49,12 +46,9 @@ Route::middleware(['auth']) // keep if your dashboard is protected
     });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('auth.profile.edit');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('auth.profile.update');
 });
-
-
 Route::get('/', [WebAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [WebAuthController::class, 'login'])->name('login.post');
 
@@ -63,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
 });
 
-Route::get('auth/login', [SocialAuthController::class, 'redirectToGoogle'])->name('login');
+Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
 
 

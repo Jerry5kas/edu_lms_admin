@@ -146,6 +146,14 @@
             <!-- Divider -->
             <div class="border-t my-4"></div>
 
+            <!-- Profile -->
+            <a href="{{ route('auth.profile.edit') }}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                Profile
+            </a>
+
             <!-- Settings -->
             <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
