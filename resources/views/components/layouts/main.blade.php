@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @vite('resources/css/app.css')
 </head>
-<body class="h-full flex">
+<body class="min-h-screen flex">
 
 <div class="flex min-h-screen w-full">
     <!-- Mobile overlay -->
