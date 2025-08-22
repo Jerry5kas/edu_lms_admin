@@ -6,7 +6,26 @@
 {{--@endsection--}}
 
 <x-layouts.main>
-    <div class="bg-gray-50 p-6" x-data="{ courses: [1,2,3,4,5,6] }">
+    <div class="bg-white border rounded-2xl shadow p-6"
+         x-data="{ courses: [1,2,3,4,5,6] }">
+
+        <!-- 🔹 Top Bar -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+            <!-- Heading -->
+            <h1 class="text-2xl font-bold text-gray-800">Student Courses</h1>
+
+            <!-- Add Button -->
+            <a href="{{route('courses.create')}}"
+                class="flex items-center gap-2 px-4 py-2 text-base font-medium text-white bg-blue-600 rounded-full shadow hover:bg-blue-700 transition">
+                <!-- Heroicon: Plus -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 4v16m8-8H4"/>
+                </svg>
+                Add New Course
+            </a>
+        </div>
 
         <!-- Grid Container -->
         <div class="grid gap-6 sm:grid-cols-3 lg:grid-cols-3">
@@ -22,8 +41,8 @@
 
                     <!-- Tag -->
                     <span class="inline-block px-3 py-1 text-sm rounded-full bg-green-100 text-green-600 font-medium mb-2">
-          Development
-        </span>
+                  Development
+                </span>
 
                     <!-- Title -->
                     <h2 class="text-lg font-bold text-gray-800 mb-2">
