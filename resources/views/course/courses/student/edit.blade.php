@@ -75,20 +75,20 @@
                     @if($course->thumbnail_path)
                         <div class="mb-2">
                             <p class="text-sm text-gray-600 mb-2">Current Thumbnail:</p>
-                            <img src="{{ asset('storage/' . $course->thumbnail_path) }}" 
-                                 alt="Current Thumbnail" 
+                            <img src="{{ asset('storage/' . $course->thumbnail_path) }}"
+                                 alt="Current Thumbnail"
                                  class="w-32 h-24 object-cover rounded-lg border">
                         </div>
                     @endif
-                    
-                    <input type="file" name="thumbnail" accept="image/*" 
+
+                    <input type="file" name="thumbnail" accept="image/*"
                            class="w-full border rounded-lg px-3 py-2"
                            @change="preview = URL.createObjectURL($event.target.files[0])">
-                    
+
                     <!-- New Preview -->
                     <div x-show="preview" class="mt-2">
                         <p class="text-sm text-gray-600 mb-2">New Thumbnail Preview:</p>
-                        <img :src="preview" alt="Thumbnail Preview" 
+                        <img :src="preview" alt="Thumbnail Preview"
                              class="w-32 h-24 object-cover rounded-lg border">
                     </div>
                 </div>
@@ -114,9 +114,16 @@
                 </select>
             </div>
 
+            <div class="mb-4">
+                <label class="block font-medium mb-1">Created By</label>
+                <p class="px-3 py-2 bg-gray-100 rounded-lg">
+                    {{ $course->creator?->id ?? 'N/A' }}
+                </p>
+            </div>
+
             <!-- Publish -->
             <div class="flex items-center gap-2">
-                <input type="checkbox" name="is_published" value="1" 
+                <input type="checkbox" name="is_published" value="1"
                        {{ old('is_published', $course->is_published) ? 'checked' : '' }}>
                 <label>Publish immediately</label>
             </div>
@@ -130,7 +137,7 @@
             </div>
 
             <div class="flex justify-end gap-4">
-                <a href="{{ route('courses.index') }}" 
+                <a href="{{ route('courses.index') }}"
                    class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                     Cancel
                 </a>

@@ -70,13 +70,13 @@
             <div>
                 <label class="block font-medium mb-1">Thumbnail</label>
                 <div x-data="{ preview: null }">
-                    <input type="file" name="thumbnail" accept="image/*" 
+                    <input type="file" name="thumbnail" accept="image/*"
                            class="w-full border rounded-lg px-3 py-2"
                            @change="preview = URL.createObjectURL($event.target.files[0])">
-                    
+
                     <!-- Preview -->
                     <div x-show="preview" class="mt-2">
-                        <img :src="preview" alt="Thumbnail Preview" 
+                        <img :src="preview" alt="Thumbnail Preview"
                              class="w-32 h-24 object-cover rounded-lg border">
                     </div>
                 </div>
@@ -101,6 +101,14 @@
                     @endforeach
                 </select>
             </div>
+
+            <div class="mb-4">
+                <label class="block font-medium mb-1">Created By</label>
+                <p class="px-3 py-2 bg-gray-100 rounded-lg">
+                    {{ $course->creator?->id ?? 'N/A' }}
+                </p>
+            </div>
+
 
             <!-- Publish -->
             <div class="flex items-center gap-2">

@@ -118,7 +118,7 @@ class CourseController extends Controller
         ]);
 
         $thumbnailPath = $course->thumbnail_path; // Keep existing thumbnail
-        
+
         if ($request->hasFile('thumbnail')) {
             // Delete old file if exists
             if ($course->thumbnail_path && \Storage::disk('public')->exists($course->thumbnail_path)) {
@@ -127,7 +127,7 @@ class CourseController extends Controller
 
             $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
         }
-        
+
         $course->update([
             'slug' => $request->slug,
             'title' => $request->title,

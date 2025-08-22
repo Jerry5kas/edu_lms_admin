@@ -28,8 +28,8 @@
 
                 <!-- Top Image -->
                 @if($course->thumbnail_path)
-                    <img src="{{ asset('storage/' . $course->thumbnail_path) }}" 
-                         alt="{{ $course->title }}" 
+                    <img src="{{ asset('storage/' . $course->thumbnail_path) }}"
+                         alt="{{ $course->title }}"
                          class="w-full h-40 object-cover rounded-lg mb-4">
                 @else
                     <div class="w-full h-40 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
@@ -59,7 +59,7 @@
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Creator"
                          class="w-8 h-8 rounded-full">
                     <p class="text-sm text-gray-600">
-                        Created by <span class="font-semibold text-gray-800">Albert James</span>
+                        Created by <span class="font-semibold text-gray-800">{{ $course->id }}</span>
                     </p>
                 </div>
 
