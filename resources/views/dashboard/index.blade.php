@@ -1,7 +1,3 @@
-@extends('components.layouts.main')
-
-@section('content')
-
+<x-layouts.main>
     <x-partials.main/>
-
-@endsection
+</x-layouts.main>

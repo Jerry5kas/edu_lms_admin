@@ -31,7 +31,17 @@
                     Dashboard
                 </a>
             </div>
-
+            <div>
+                <a href="{{ route('categories.index') }}"
+                   class="flex items-center w-full px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-700 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4 4h12a2 2 0 002-2V10a2 2 0 00-.586-1.414l-7-7a2 2 0 00-2.828 0l-7 7A2 2 0 003 10v10a2 2 0 002 2z"/>
+                    </svg>
+                    Categories
+                </a>
+            </div>
             <!-- Courses Dropdown -->
             <div x-data="{ open: false }" class="relative">
                 <button @click="open = !open"
@@ -55,7 +65,7 @@
                 <div x-show="open" @click.away="open = false" x-transition
                      class="absolute left-0 mt-2 w-56 rounded-lg shadow-lg bg-white border border-gray-100 z-20">
                     <div class="py-2">
-                        <a href="{{ route('dashboard.courses.student.index') }}"
+                        <a href="{{ route('courses.index') }}"
                            class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -65,7 +75,7 @@
                             Student Courses
                         </a>
 
-                        <a href="{{ route('dashboard.courses.master.index') }}"
+                        <a href="{{ route('instructor.courses.index') }}"
                            class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
