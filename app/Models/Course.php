@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Course extends Model
 {
@@ -21,6 +22,16 @@ class Course extends Model
         'published_at' => 'datetime',
         'meta' => 'array',
     ];
+
+    // Auto-generate UUID
+    protected static function booted()
+    {
+        static::creating(function ($course) {
+            if (empty($course->uuid)) {
+                $course->uuid = Str::uuid();
+            }
+        });
+    }
 
     public function categories()
     {

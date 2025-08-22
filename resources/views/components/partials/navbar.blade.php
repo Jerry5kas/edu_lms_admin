@@ -67,9 +67,9 @@
             >
                 <img src="{{ Auth::check() && Auth::user()->profile
                         ? asset('storage/profile_images/' . Auth::user()->profile)
-                        : asset('images/default-profile.png') }}"
+                        : 'https://via.placeholder.com/150/3B82F6/FFFFFF?text=' . substr(Auth::user()->name ?? 'U', 0, 1) }}"
                      alt="Profile"
-                     class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" />
+                     class="w-10 h-10 rounded-full border-2 border-blue-500" />
 {{--                <img class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" alt="User">--}}
             </button>
 
@@ -84,9 +84,9 @@
                 <div class="flex items-center space-x-3 p-4 border-b">
                     <img src="{{ Auth::check() && Auth::user()->profile
                         ? asset('storage/profile_images/' . Auth::user()->profile)
-                        : asset('images/default-profile.png') }}"
+                        : 'https://via.placeholder.com/150/3B82F6/FFFFFF?text=' . substr(Auth::user()->name ?? 'U', 0, 1) }}"
                          alt="Profile"
-                         class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" />
+                         class="w-10 h-10 rounded-full" />
 {{--                    <img class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" alt="User">--}}
                     <div>
                         <h2 class="text-sm font-semibold text-gray-800">
@@ -104,7 +104,7 @@
                 <!-- Menu Items -->
                 <ul class="p-2">
                     <li>
-                        <a href="/profile/edit" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('auth.profile.edit') }}" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100">
                             <!-- User Icon -->
                             <img src="" alt="">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -147,13 +147,16 @@
 
                 <!-- Logout -->
                 <div class="border-t">
-                    <a href="/" class="flex items-center px-3 py-3 rounded-b-xl text-sm font-medium text-red-600 hover:bg-red-50">
+                    <form action="{{ route('admin.logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="flex items-center px-3 py-3 rounded-b-xl text-sm font-medium text-red-600 hover:bg-red-50 w-full text-left">
                         <!-- Logout Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-10V5a2 2 0 114 0v1" />
                         </svg>
                         Logout
-                    </a>
+                    </button>
+                    </form>
                 </div>
             </div>
         </div>
