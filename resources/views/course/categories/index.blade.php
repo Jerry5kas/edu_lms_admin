@@ -1,8 +1,36 @@
 <x-layouts.main>
-    <div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-6">
+        <div class="w-full max-w-7xl mx-auto" x-data="{ open:false, selected:'Sort Order' }">
+            
+            @if(session('success'))
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            @endif
 
-        <div class="w-full max-w-7xl bg-white rounded-xl shadow-md p-6" x-data="{ open:false, selected:'Sort Order' }">
+            @if(session('error'))
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
+            @endif
 
+            <!-- 🔹 Top Bar -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+                <!-- Heading -->
+                <h1 class="text-2xl font-bold text-gray-800">Categories</h1>
+
+                <!-- Add Button -->
+                <a href="{{route('categories.create')}}"
+                   class="flex items-center gap-2 px-4 py-2 text-base font-medium text-white bg-blue-600 rounded-full shadow hover:bg-blue-700 transition">
+                    <!-- Heroicon: Plus -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Add New Category
+                </a>
+            </div>
             <!-- Header Section -->
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
                 <!-- Breadcrumb -->
@@ -48,12 +76,11 @@
                 <table class="w-full text-sm text-left text-gray-600">
                     <thead class="bg-gray-100 text-gray-700">
                     <tr>
-{{--                        <th class="p-3"><input type="checkbox"></th>--}}
                         <th class="p-3">ID</th>
-                        <th class="p-3">Parent</th>
                         <th class="p-3">Slug</th>
                         <th class="p-3">Name</th>
                         <th class="p-3">Description</th>
+                        <th class="p-3">Parent</th>
                         <th class="p-3">Sort Order</th>
                         <th class="p-3">Created At</th>
                         <th class="p-3">Actions</th>
@@ -101,7 +128,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </x-layouts.main>

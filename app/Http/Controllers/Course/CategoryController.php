@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $request->validate([
             'slug' => 'required|unique:course_categories,slug',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'parent_id' => 'nullable|exists:course_categories,id',
             'sort_order' => 'nullable|integer',
         ]);
@@ -45,13 +46,14 @@ class CategoryController extends Controller
         $request->validate([
             'slug' => 'required|unique:course_categories,slug,' . $category->id,
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'parent_id' => 'nullable|exists:course_categories,id',
             'sort_order' => 'nullable|integer',
         ]);
 
         $category->update($request->all());
 
-        return redirect()->route('course.categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function destroy(CourseCategory $category)

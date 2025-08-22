@@ -1,31 +1,76 @@
 <x-layouts.main>
-    <div class="container mx-auto p-4">
-        <h2 class="text-xl font-bold mb-4">Create Category</h2>
+    <div class="max-w-3xl mx-auto bg-white shadow rounded-2xl p-6">
+        <h1 class="text-2xl font-bold mb-6">Edit Category</h1>
 
-        <form action="{{ route('categories.store') }}" method="POST">
+        @if($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('categories.update', $category) }}" method="POST" class="space-y-4">
             @csrf
+            @method('PUT')
 
-            <div class="mb-3">
-                <label class="block">Slug</label>
-                <input type="text" name="slug" class="border rounded w-full p-2">
+            <!-- Name -->
+            <div>
+                <label class="block font-medium mb-1">Name</label>
+                <input type="text" name="name" value="{{ old('name', $category->name) }}" 
+                       class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                       placeholder="Enter category name">
             </div>
 
-            <div class="mb-3">
-                <label class="block">Name</label>
-                <input type="text" name="name" class="border rounded w-full p-2">
+            <!-- Slug -->
+            <div>
+                <label class="block font-medium mb-1">Slug</label>
+                <input type="text" name="slug" value="{{ old('slug', $category->slug) }}" 
+                       class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                       placeholder="Enter category slug">
             </div>
 
-            <div class="mb-3">
-                <label class="block">Parent</label>
-                <select name="parent_id" class="border rounded w-full p-2">
-                    <option value="">None</option>
-                    @foreach($parents as $p)
-                        <option value="{{ $p->id }}">{{ $p->name }}</option>
+            <!-- Description -->
+            <div>
+                <label class="block font-medium mb-1">Description</label>
+                <textarea name="description" rows="3" 
+                          class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                          placeholder="Enter category description">{{ old('description', $category->description) }}</textarea>
+            </div>
+
+            <!-- Parent Category -->
+            <div>
+                <label class="block font-medium mb-1">Parent Category</label>
+                <select name="parent_id" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <option value="">None (Top Level)</option>
+                    @foreach($parents as $parent)
+                        <option value="{{ $parent->id }}" 
+                            {{ old('parent_id', $category->parent_id) == $parent->id ? 'selected' : '' }}>
+                            {{ $parent->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
 
-            <button class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+            <!-- Sort Order -->
+            <div>
+                <label class="block font-medium mb-1">Sort Order</label>
+                <input type="number" name="sort_order" value="{{ old('sort_order', $category->sort_order ?? 0) }}" 
+                       class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                       placeholder="Enter sort order">
+            </div>
+
+            <div class="flex justify-end gap-4">
+                <a href="{{ route('categories.index') }}" 
+                   class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                    Cancel
+                </a>
+                <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    Update Category
+                </button>
+            </div>
         </form>
     </div>
 </x-layouts.main>
