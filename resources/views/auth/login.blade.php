@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gray-50 font-sans">
+<body class=" flex items-center justify-center bg-gray-50 font-sans">
 
-<div class="flex w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden flex-col md:flex-row">
+<div class="flex  h-screen  bg-white shadow-lg rounded-lg overflow-hidden flex-col md:flex-row">
 
     <!-- Left Side Image -->
     <div class="hidden md:flex w-1/2 bg-gray-100 items-center justify-center">

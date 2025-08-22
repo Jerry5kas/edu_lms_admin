@@ -18,7 +18,7 @@
         </div>
 
         <!-- Nav -->
-        <nav class="px-4 py-6 space-y-2 text-gray-700 text-sm">
+        <nav class=" min-h-screen px-4 py-6 space-y-2 text-gray-700 text-sm">
 
             <!-- Dashboard -->
             <div>
@@ -90,7 +90,7 @@
             </div>
 
             <!-- Other Nav Links (no changes) -->
-            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+            <a href="" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
                 </svg>

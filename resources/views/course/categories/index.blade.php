@@ -1,7 +1,7 @@
 <x-layouts.main>
-    <div class="bg-white p-6">
+    <div class="bg-white rounded-xl p-6">
         <div class="w-full max-w-7xl mx-auto" x-data="{ open:false, selected:'Sort Order' }">
-            
+
             @if(session('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
                     <span class="block sm:inline">{{ session('success') }}</span>

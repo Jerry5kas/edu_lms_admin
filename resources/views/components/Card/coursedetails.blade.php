@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Details</title>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 min-h-screen flex justify-center p-4">
+
+<div class="bg-gray-50 min-h-screen flex justify-center p-4">
 
 <div class="max-w-2xl w-full bg-white rounded-2xl shadow p-6" x-data="{ editing: false }">
 
@@ -87,5 +79,5 @@
     </div>
 </div>
 
-</body>
-</html>
+</div>
+
