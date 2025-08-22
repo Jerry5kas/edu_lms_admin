@@ -1,5 +1,6 @@
 <div class="min-h-screen" x-data="{ open: false }">
 <!-- Mobile overlay -->
+
 <div x-show="open" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" @click="open=false"></div>
 
 <!-- Sidebar -->

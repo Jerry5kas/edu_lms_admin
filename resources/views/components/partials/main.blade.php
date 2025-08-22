@@ -26,33 +26,39 @@
 <!-- App root -->
 <div x-data="app()" x-init="init()" x-cloak class="min-h-screen">
 
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <!-- Logo -->
+                    <!-- Nav Links -->
+                    <div class="hidden sm:flex items-center gap-2">
+                        <button @click="openDashboard()"
+                                :class="view==='dashboard'? 'text-indigo-600 font-semibold' : 'text-gray-600'"
+                                class="px-3 py-2 rounded-md inline-flex items-center gap-2">
+                            <!-- Heroicon: chart-bar -->
+                            <div class="bg-indigo-600 text-white rounded-full p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/>
+                            </svg>
+                            </div>
+                            <span class="font-semibold">Edulearn</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right side (mobile menu placeholder / profile) -->
+            </div>
+        </div>
+    </nav>
 
     <!-- MAIN -->
     <main class="max-w-7xl mx-auto p-4">
 
         <!-- HOME VIEW (simple call-to-action) -->
-        <section x-show="view==='home'" x-transition class="space-y-6">
-            <div class="bg-white rounded-2xl shadow p-6">
-                <h1 class="text-xl font-bold">Welcome back 👋</h1>
-                <div class="flex items-center space-x-3 p-4 border-b">
-                    <div>
-                        <h2 class="text-lg font-semibold text-gray-800">
-                            {{ Auth::check() ? Auth::user()->name : 'Guest' }}
-                        </h2>
-                        <p class="text-xs text-gray-500">
-                            {{ Auth::user()->email ?? '' }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="mt-4 flex gap-3">
-                    <button @click="openDashboard()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">Open
-                        Dashboard
-                    </button>
-
-                </div>
-            </div>
-        </section>
 
         <!-- DASHBOARD VIEW -->
         <section x-show="view==='dashboard'" x-transition class="space-y-6">
