@@ -8,4 +8,7 @@
     <x-card.StatsCards/>
     <x-chart.studychart/>
     <x-chart.RevenueGenerate/>
+    <x-card.course-details/>
+
+
 </x-layouts.main>
