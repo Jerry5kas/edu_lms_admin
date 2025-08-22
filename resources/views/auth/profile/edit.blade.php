@@ -25,13 +25,6 @@
             @endif
 
             <div class="flex flex-col md:flex-row md:items-center gap-6">
-{{--                <!-- Avatar -->--}}
-{{--                <div class="flex flex-col items-center md:items-start">--}}
-{{--                    <img src="{{ Auth::check() && Auth::user()->profile--}}
-{{--                        ? asset('storage/profile_images/' . Auth::user()->profile)--}}
-{{--                        : 'https://via.placeholder.com/150/3B82F6/FFFFFF?text=' . substr(Auth::user()->name ?? 'U', 0, 1) }}"--}}
-{{--                         alt="Profile"--}}
-{{--                         class="w-24 h-24 rounded-full object-cover mb-2 border">--}}
 
                     <!-- Left Panel: Profile Image & Upload -->
                     <div class="flex flex-col items-center md:items-start">

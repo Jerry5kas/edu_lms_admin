@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('language', 8)->default('de');
             $table->enum('level', ['beginner','intermediate','advanced'])->default('beginner');
             $table->integer('price_cents')->default(0);
-             $table->char('currency', 3)->default('EUR');
+            $table->char('currency', 3)->default('EUR');
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->string('thumbnail_path')->nullable();

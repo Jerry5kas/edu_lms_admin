@@ -50,8 +50,15 @@ class CourseController extends Controller
             'is_published' => 'boolean',
             'published_at' => 'nullable|date',
             'categories' => 'array',
-            'categories.*' => 'exists:course_categories,id',
+            'thumbnail_path' => 'nullable|string',
+//            'categories.*' => 'exists:course_categories,id',
         ]);
+
+        $thumbnailPath = null;
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+            // stored in storage/app/public/thumbnails
+        }
 
         $course = Course::create([
             'uuid' => Str::uuid(),
@@ -65,7 +72,7 @@ class CourseController extends Controller
             'currency' => $request->currency,
             'is_published' => $request->boolean('is_published'),
             'published_at' => $request->published_at,
-            'thumbnail_path' => $request->thumbnail_path,
+            'thumbnail_path' => $thumbnailPath,
             'trailer_url' => $request->trailer_url,
             'meta' => $request->meta,
             'created_by' => auth()->id(),
@@ -110,6 +117,17 @@ class CourseController extends Controller
             'categories.*' => 'exists:course_categories,id',
         ]);
 
+        $thumbnailPath = $course->thumbnail_path; // Keep existing thumbnail
+        
+        if ($request->hasFile('thumbnail')) {
+            // Delete old file if exists
+            if ($course->thumbnail_path && \Storage::disk('public')->exists($course->thumbnail_path)) {
+                \Storage::disk('public')->delete($course->thumbnail_path);
+            }
+
+            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+        }
+        
         $course->update([
             'slug' => $request->slug,
             'title' => $request->title,
@@ -121,7 +139,7 @@ class CourseController extends Controller
             'currency' => $request->currency,
             'is_published' => $request->boolean('is_published'),
             'published_at' => $request->published_at,
-            'thumbnail_path' => $request->thumbnail_path,
+            'thumbnail_path' => $thumbnailPath,
             'trailer_url' => $request->trailer_url,
             'meta' => $request->meta,
             'updated_by' => auth()->id(),

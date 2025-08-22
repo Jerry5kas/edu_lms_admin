@@ -69,7 +69,17 @@
             <!-- Thumbnail -->
             <div>
                 <label class="block font-medium mb-1">Thumbnail</label>
-                <input type="file" name="thumbnail" class="w-full border rounded-lg px-3 py-2">
+                <div x-data="{ preview: null }">
+                    <input type="file" name="thumbnail" accept="image/*" 
+                           class="w-full border rounded-lg px-3 py-2"
+                           @change="preview = URL.createObjectURL($event.target.files[0])">
+                    
+                    <!-- Preview -->
+                    <div x-show="preview" class="mt-2">
+                        <img :src="preview" alt="Thumbnail Preview" 
+                             class="w-32 h-24 object-cover rounded-lg border">
+                    </div>
+                </div>
             </div>
 
             <!-- Trailer URL -->
