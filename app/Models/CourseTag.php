@@ -1,25 +1,16 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CourseSection extends Model
+class CourseTag extends Model
 {
-    use SoftDeletes;
+    protected $fillable = ['slug', 'name'];
 
-    protected $fillable = ['course_id','title','sort_order'];
-
-    public function course()
+    public function courses()
     {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function lessons()
-    {
-        return $this->hasMany(Lesson::class, 'section_id');
+        return $this->belongsToMany(Course::class, 'course_tag_pivot', 'tag_id', 'course_id');
     }
 }
-
-
