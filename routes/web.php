@@ -3,6 +3,8 @@ use App\Http\Controllers\Auth\WebAuthController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Course\CategoryController;
+use App\Http\Controllers\Course\TagController;
+use App\Http\Controllers\Course\CourseSectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfileController;
 /*
@@ -30,8 +32,17 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/courses', CourseController::class);
+    Route::patch('/courses/{course}/publish', [CourseController::class, 'publish'])->name('courses.publish');
+    Route::patch('/courses/{course}/unpublish', [CourseController::class, 'unpublish'])->name('courses.unpublish');
     Route::get('/instructor', [CourseController::class, 'instructor'])->name('instructor.courses.index');
+
+    // Course Sections
+    Route::resource('/courses.sections', CourseSectionController::class)->shallow();
+    Route::post('/courses/{course}/sections/reorder', [CourseSectionController::class, 'reorder'])->name('courses.sections.reorder');
+    Route::get('/courses/{course}/sections/api', [CourseSectionController::class, 'getSectionsWithLessons'])->name('courses.sections.api');
+
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/tags', TagController::class);
     Route::post('/logout', [WebAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
 });
