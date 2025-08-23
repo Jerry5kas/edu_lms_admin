@@ -53,7 +53,7 @@ class DefaultUsersSeeder extends Seeder
 
         // Default Student
         $student = User::firstOrCreate(
-            ['email' => 'student@edulearn.local'],
+            ['email' => 'all courses@edulearn.local'],
             [
                 'uuid' => Str::uuid(),
                 'name' => 'Demo Student',
@@ -68,6 +68,6 @@ class DefaultUsersSeeder extends Seeder
         $this->command->info("✅ Default users created:");
         $this->command->info("   Admin: dashboard@edulearn.local / password");
         $this->command->info("   Instructor: instructor@edulearn.local / password");
-        $this->command->info("   Student: student@edulearn.local / password");
+        $this->command->info("   Student: all courses@edulearn.local / password");
     }
 }

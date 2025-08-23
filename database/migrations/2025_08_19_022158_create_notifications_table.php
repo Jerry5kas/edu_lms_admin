@@ -40,7 +40,7 @@ return new class extends Migration
             $table->foreignUuid('announcement_id')
                 ->constrained('notifications')
                 ->cascadeOnDelete();
-            $table->enum('role', ['student','dashboard','instructor'])->nullable();
+            $table->enum('role', ['all courses','dashboard','instructor'])->nullable();
             $table->json('segment_json')->nullable(); // advanced targeting rules
             $table->timestamps();
         });

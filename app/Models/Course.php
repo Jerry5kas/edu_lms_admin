@@ -40,7 +40,7 @@ class Course extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(CourseTag::class, 'course_tag_pivot');
+        return $this->belongsToMany(CourseTag::class, 'course_tag_pivot', 'course_id', 'tag_id');
     }
 
     public function sections()
@@ -61,5 +61,9 @@ class Course extends Model
     public function updater()
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediable');
     }
 }
