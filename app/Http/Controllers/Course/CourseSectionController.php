@@ -15,7 +15,7 @@ class CourseSectionController extends Controller
     public function index(Course $course)
     {
         $sections = $course->sections()->with('lessons')->orderBy('sort_order')->get();
-        return view('course.sections.index', compact('course', 'sections'));
+        return view('course.courses.sections.index', compact('course', 'sections'));
     }
 
     /**
@@ -23,7 +23,8 @@ class CourseSectionController extends Controller
      */
     public function create(Course $course)
     {
-        return view('course.sections.create', compact('course'));
+        $nextSortOrder = $course->sections()->max('sort_order') + 1;
+        return view('course.courses.sections.create', compact('course', 'nextSortOrder'));
     }
 
     /**
@@ -50,7 +51,7 @@ class CourseSectionController extends Controller
      */
     public function edit(Course $course, CourseSection $section)
     {
-        return view('course.sections.edit', compact('course', 'section'));
+        return view('course.courses.sections.edit', compact('course', 'section'));
     }
 
     /**

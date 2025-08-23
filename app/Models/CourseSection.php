@@ -38,7 +38,19 @@ class CourseSection extends Model
      */
     public function getTotalDurationAttribute()
     {
-        return $this->lessons()->sum('duration_seconds');
+        $totalSeconds = $this->lessons()->sum('duration_seconds');
+        if ($totalSeconds == 0) {
+            return '0 min';
+        }
+        
+        $hours = floor($totalSeconds / 3600);
+        $minutes = floor(($totalSeconds % 3600) / 60);
+        
+        if ($hours > 0) {
+            return $hours . 'h ' . $minutes . 'm';
+        }
+        
+        return $minutes . ' min';
     }
 
     /**
