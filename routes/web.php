@@ -5,6 +5,7 @@ use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Course\CategoryController;
 use App\Http\Controllers\Course\TagController;
 use App\Http\Controllers\Course\CourseSectionController;
+use App\Http\Controllers\Course\LessonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfileController;
 /*
@@ -37,9 +38,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/instructor', [CourseController::class, 'instructor'])->name('instructor.courses.index');
 
     // Course Sections
-    Route::resource('/courses.sections', CourseSectionController::class)->shallow();
+    Route::resource('/courses.sections', CourseSectionController::class);
     Route::post('/courses/{course}/sections/reorder', [CourseSectionController::class, 'reorder'])->name('courses.sections.reorder');
     Route::get('/courses/{course}/sections/api', [CourseSectionController::class, 'getSectionsWithLessons'])->name('courses.sections.api');
+
+    // Lessons
+    Route::resource('/courses.sections.lessons', LessonController::class);
+    Route::patch('/courses/{course}/sections/{section}/lessons/{lesson}/publish', [LessonController::class, 'publish'])->name('courses.sections.lessons.publish');
+    Route::patch('/courses/{course}/sections/{section}/lessons/{lesson}/unpublish', [LessonController::class, 'unpublish'])->name('courses.sections.lessons.unpublish');
+    Route::post('/courses/{course}/sections/{section}/lessons/reorder', [LessonController::class, 'reorder'])->name('courses.sections.lessons.reorder');
 
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);

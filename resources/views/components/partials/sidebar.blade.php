@@ -99,7 +99,7 @@
 
                         <div class="border-t border-gray-200 my-1"></div>
 
-                        <a href="#"
+                        <a href="{{ route('courses.index') }}"
                            class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-500">
                             <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
