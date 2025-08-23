@@ -18,7 +18,7 @@ class LessonController extends Controller
     public function index(Course $course, CourseSection $section)
     {
         $lessons = $section->lessons()->orderBy('sort_order')->get();
-        return view('course.lessons.index', compact('course', 'section', 'lessons'));
+        return view('course.courses.lessons.index', compact('course', 'section', 'lessons'));
     }
 
     /**
@@ -26,7 +26,7 @@ class LessonController extends Controller
      */
     public function create(Course $course, CourseSection $section)
     {
-        return view('course.lessons.create', compact('course', 'section'));
+        return view('course.courses.lessons.create', compact('course', 'section'));
     }
 
     /**
@@ -51,7 +51,7 @@ class LessonController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'content_type' => $request->content_type,
-            'content' => $request->content,
+//            'content' => $request->content,
             'sort_order' => $request->sort_order ?? 0,
             'is_published' => $request->boolean('is_published'),
             'created_by' => auth()->id(),
@@ -67,7 +67,7 @@ class LessonController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $path = $file->store('lessons/attachments', 'public');
-            
+
             $media = Media::create([
                 'user_id' => auth()->id(),
                 'disk' => 'public',
@@ -95,7 +95,7 @@ class LessonController extends Controller
      */
     public function edit(Course $course, CourseSection $section, Lesson $lesson)
     {
-        return view('course.lessons.edit', compact('course', 'section', 'lesson'));
+        return view('course.courses.lessons.edit', compact('course', 'section', 'lesson'));
     }
 
     /**
@@ -118,7 +118,7 @@ class LessonController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'content_type' => $request->content_type,
-            'content' => $request->content,
+//            'content' => $request->content,
             'sort_order' => $request->sort_order ?? 0,
             'is_published' => $request->boolean('is_published'),
             'updated_by' => auth()->id(),
@@ -142,7 +142,7 @@ class LessonController extends Controller
 
             $file = $request->file('attachment');
             $path = $file->store('lessons/attachments', 'public');
-            
+
             $media = Media::create([
                 'user_id' => auth()->id(),
                 'disk' => 'public',
@@ -179,7 +179,7 @@ class LessonController extends Controller
         }
 
         $lesson->delete();
-        
+
         return redirect()->route('courses.sections.lessons.index', [$course, $section])
             ->with('success', 'Lesson deleted successfully.');
     }

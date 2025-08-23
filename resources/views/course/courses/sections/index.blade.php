@@ -6,7 +6,7 @@
                 <h1 class="text-2xl font-bold text-gray-800">{{ $course->title }}</h1>
                 <p class="text-gray-600">Course Sections</p>
             </div>
-            
+
             <!-- Success/Error Messages -->
             @if(session('success'))
                 <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
@@ -23,7 +23,7 @@
             <!-- Add Section Button -->
             <div class="mb-6 flex justify-between items-center">
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('courses.show', $course) }}" 
+                    <a href="{{ route('courses.show', $course) }}"
                        class="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition">
                         ← Back to Course
                     </a>
@@ -56,7 +56,9 @@
                                         {{ $section->id }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">{{ $section->title }}</div>
+                                        <a href="{{ route('courses.sections.lessons.index', [$course, $section]) }}">
+                                        <div class="text-sm font-medium text-gray-900 hover:text-blue-600">{{ $section->title }}</div>
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                         {{ $section->sort_order }}
@@ -74,21 +76,21 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <div class="flex items-center justify-end gap-2">
-                                            <a href="{{ route('courses.sections.lessons.index', [$course, $section]) }}"
-                                               class="text-blue-600 hover:text-blue-900" title="View Lessons">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                                </svg>
-                                            </a>
+{{--                                            <a href="{{ route('courses.sections.lessons.index', [$course, $section]) }}"--}}
+{{--                                               class="text-blue-600 hover:text-blue-900" title="View Lessons">--}}
+{{--                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">--}}
+{{--                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>--}}
+{{--                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>--}}
+{{--                                                </svg>--}}
+{{--                                            </a>--}}
                                             <a href="{{ route('courses.sections.edit', [$course, $section]) }}"
                                                class="text-indigo-600 hover:text-indigo-900" title="Edit Section">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                 </svg>
                                             </a>
-                                            <form action="{{ route('courses.sections.destroy', [$course, $section]) }}" 
-                                                  method="POST" 
+                                            <form action="{{ route('courses.sections.destroy', [$course, $section]) }}"
+                                                  method="POST"
                                                   onsubmit="return confirm('Are you sure you want to delete this section?')"
                                                   class="inline">
                                                 @csrf
@@ -105,7 +107,7 @@
                             @empty
                                 <tr>
                                     <td colspan="7" class="px-6 py-4 text-center text-gray-500">
-                                        No sections found. 
+                                        No sections found.
                                         <a href="{{ route('courses.sections.create', $course) }}" class="text-blue-600 hover:text-blue-800">
                                             Create your first section
                                         </a>
