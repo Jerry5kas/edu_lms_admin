@@ -32,7 +32,7 @@
 
         <!-- Navbar -->
         <header class="sticky top-0 bg-white shadow z-10">
-           <x-partials.navbar />
+            <x-partials.navbar />
         </header>
 
         <!-- Body -->
