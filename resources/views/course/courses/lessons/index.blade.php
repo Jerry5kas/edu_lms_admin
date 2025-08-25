@@ -19,7 +19,7 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Title</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Content Type</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Status</th>
+                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Status</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Sort Order</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Created At</th>
                     <th class="px-6 py-3 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">Actions</th>
@@ -38,6 +38,7 @@
                                 {{ ucfirst($lesson->content_type) }}
                             @endif
                         </td>
+
                         <td class="px-6 py-4 text-sm">
                             @if ($lesson->is_published)
                                 <span class="px-2 py-0.5 text-xs bg-green-100 text-green-700 rounded-full">Published</span>
@@ -48,6 +49,14 @@
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $lesson->sort_order }}</td>
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $lesson->created_at->format('Y-m-d') }}</td>
                         <td class="px-6 py-4 flex items-center justify-center gap-2">
+                            <!-- View Progress -->
+                            <a href="{{ route('lessons.progress-view', $lesson) }}"
+                               class="text-indigo-600 hover:text-indigo-900" title="View Progress">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </a>
                             <!-- Edit -->
                             <a href="{{ route('courses.sections.lessons.edit', [$course, $section, $lesson]) }}"
                                class="text-blue-500 hover:text-blue-700">
@@ -94,7 +103,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">No lessons found.</td>
+                        <td colspan="7" class="px-6 py-4 text-center text-gray-500">No lessons found.</td>
                     </tr>
                 @endforelse
                 </tbody>

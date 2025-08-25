@@ -72,7 +72,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"/>
                         </svg>
-                        24 Lessons
+                        {{ $course->sections->count() }} Sections
                     </div>
                     <div class="flex items-center gap-1">
                         <!-- Heroicon: Clock -->

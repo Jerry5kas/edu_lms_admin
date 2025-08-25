@@ -81,7 +81,7 @@
                         </div>
                     @endif
 
-                    <input type="file" name="thumbnail" accept="image/*"
+                    <input type="file" name="thumbnail_path" accept="image/*"
                            class="w-full border rounded-lg px-3 py-2"
                            @change="preview = URL.createObjectURL($event.target.files[0])">
 
