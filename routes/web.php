@@ -6,6 +6,9 @@ use App\Http\Controllers\Course\CategoryController;
 use App\Http\Controllers\Course\TagController;
 use App\Http\Controllers\Course\CourseSectionController;
 use App\Http\Controllers\Course\LessonController;
+use App\Http\Controllers\Course\LessonViewController;
+use App\Http\Controllers\Course\QuizController;
+use App\Http\Controllers\Course\MediaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfileController;
 /*
@@ -48,8 +51,41 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/courses/{course}/sections/{section}/lessons/{lesson}/unpublish', [LessonController::class, 'unpublish'])->name('courses.sections.lessons.unpublish');
     Route::post('/courses/{course}/sections/{section}/lessons/reorder', [LessonController::class, 'reorder'])->name('courses.sections.lessons.reorder');
 
+    // Lesson Views - Progress Tracking
+    Route::get('/lesson-views', [LessonViewController::class, 'index'])->name('lesson-views.index');
+    Route::get('/lesson-views/{lessonView}', [LessonViewController::class, 'show'])->name('lesson-views.show');
+    
+    // Lesson Progress Tracking (AJAX endpoints)
+    Route::post('/lessons/{lesson}/start', [LessonViewController::class, 'startLesson'])->name('lessons.start');
+    Route::post('/lessons/{lesson}/track-progress', [LessonViewController::class, 'trackProgress'])->name('lessons.track-progress');
+    Route::post('/lessons/{lesson}/complete', [LessonViewController::class, 'completeLesson'])->name('lessons.complete');
+    Route::get('/lessons/{lesson}/progress', [LessonViewController::class, 'getProgress'])->name('lessons.get-progress');
+    Route::get('/courses/{course}/progress', [LessonViewController::class, 'getCourseProgress'])->name('courses.progress');
+    
+    // Admin Progress Views
+    Route::get('/lessons/{lesson}/progress-view', [LessonViewController::class, 'lessonProgress'])->name('lessons.progress-view');
+    Route::get('/users/{user}/lesson-progress', [LessonViewController::class, 'userProgress'])->name('users.lesson-progress');
+    Route::get('/courses/{course}/progress-view', [LessonViewController::class, 'courseProgress'])->name('courses.progress-view');
+    
+    // Tracking Example
+    Route::get('/lesson-tracking-example', function() {
+        return view('course.courses.lesson-view.tracking-example');
+    })->name('lesson-tracking.example');
+
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
+    
+    // Quizzes
+    Route::resource('/quizzes', QuizController::class);
+    Route::patch('/quizzes/{quiz}/toggle-active', [QuizController::class, 'toggleActive'])->name('quizzes.toggle-active');
+    Route::get('/lessons/{lesson}/quizzes', [QuizController::class, 'getQuizzesForLesson'])->name('lessons.quizzes');
+    
+    // Media Management
+    Route::resource('/media', MediaController::class);
+    Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
+    Route::get('/media/get-media', [MediaController::class, 'getMedia'])->name('media.get-media');
+    Route::post('/media/get-by-path', [MediaController::class, 'getByPath'])->name('media.get-by-path');
+    Route::post('/media/bulk-delete', [MediaController::class, 'bulkDelete'])->name('media.bulk-delete');
     Route::post('/logout', [WebAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
 });
