@@ -70,7 +70,7 @@
             <div>
                 <label class="block font-medium mb-1">Thumbnail</label>
                 <div x-data="{ preview: null }">
-                    <input type="file" name="thumbnail" accept="image/*"
+                    <input type="file" name="thumbnail_path" accept="image/*"
                            class="w-full border rounded-lg px-3 py-2"
                            @change="preview = URL.createObjectURL($event.target.files[0])">
 
