@@ -54,19 +54,19 @@ Route::middleware(['auth'])->group(function () {
     // Lesson Views - Progress Tracking
     Route::get('/lesson-views', [LessonViewController::class, 'index'])->name('lesson-views.index');
     Route::get('/lesson-views/{lessonView}', [LessonViewController::class, 'show'])->name('lesson-views.show');
-    
+
     // Lesson Progress Tracking (AJAX endpoints)
     Route::post('/lessons/{lesson}/start', [LessonViewController::class, 'startLesson'])->name('lessons.start');
     Route::post('/lessons/{lesson}/track-progress', [LessonViewController::class, 'trackProgress'])->name('lessons.track-progress');
     Route::post('/lessons/{lesson}/complete', [LessonViewController::class, 'completeLesson'])->name('lessons.complete');
     Route::get('/lessons/{lesson}/progress', [LessonViewController::class, 'getProgress'])->name('lessons.get-progress');
     Route::get('/courses/{course}/progress', [LessonViewController::class, 'getCourseProgress'])->name('courses.progress');
-    
+
     // Admin Progress Views
     Route::get('/lessons/{lesson}/progress-view', [LessonViewController::class, 'lessonProgress'])->name('lessons.progress-view');
     Route::get('/users/{user}/lesson-progress', [LessonViewController::class, 'userProgress'])->name('users.lesson-progress');
     Route::get('/courses/{course}/progress-view', [LessonViewController::class, 'courseProgress'])->name('courses.progress-view');
-    
+
     // Tracking Example
     Route::get('/lesson-tracking-example', function() {
         return view('course.courses.lesson-view.tracking-example');
@@ -74,12 +74,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
-    
+
     // Quizzes
     Route::resource('/quizzes', QuizController::class);
     Route::patch('/quizzes/{quiz}/toggle-active', [QuizController::class, 'toggleActive'])->name('quizzes.toggle-active');
     Route::get('/lessons/{lesson}/quizzes', [QuizController::class, 'getQuizzesForLesson'])->name('lessons.quizzes');
-    
+
     // Media Management
     Route::resource('/media', MediaController::class);
     Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
@@ -97,3 +97,15 @@ Route::get('/test', function () {
     return view('test');
 });
 
+use App\Http\Controllers\PaymentController;
+
+Route::resource('payments', PaymentController::class);
+use App\Http\Controllers\EnrollmentController;
+
+Route::middleware(['auth'])->group(function () {
+    // Enroll a user into a course
+    Route::post('/courses/{course}/enroll', [EnrollmentController::class, 'store'])->name('courses.enroll');
+
+    // List my enrolled courses
+    Route::get('/my-courses', [EnrollmentController::class, 'index'])->name('my.courses');
+});

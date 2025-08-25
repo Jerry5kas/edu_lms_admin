@@ -73,6 +73,7 @@ return new class extends Migration {
             $table->timestamp('received_at')->useCurrent();
         });
 
+
         // Refunds
         Schema::create('refunds', function (Blueprint $table) {
             $table->id();
