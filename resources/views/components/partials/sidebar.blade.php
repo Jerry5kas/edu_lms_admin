@@ -183,6 +183,16 @@
                 </svg>
                 Media Library
             </a>
+            <a href="{{ route('payments.index') }}"
+               class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4zM4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+                Payments
+            </a>
+
 
 
             <!-- Other Nav Links (no changes) -->
