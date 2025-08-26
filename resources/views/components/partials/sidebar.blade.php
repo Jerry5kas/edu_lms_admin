@@ -192,15 +192,19 @@
                 </svg>
                 Payments
             </a>
-
-
-
-            <!-- Other Nav Links (no changes) -->
-            <a href="" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+            <a href="{{ route('subscriptions.index')}}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
                 </svg>
-                Students
+                Subscription
+            </a>
+
+            <!-- Other Nav Links (no changes) -->
+            <a href="/notifications" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
+                </svg>
+              notification
             </a>
 
             <!-- keep your other links exactly the same as before... --><a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
@@ -222,13 +226,6 @@
                     <path d="M9 17v-2h6v2H9zm-4 4h14v-2H5v2zm0-4h14v-2H5v2z" />
                 </svg>
                 Resources
-            </a>
-
-            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 10h.01M12 14h.01M16 10h.01M21 16v-2a9 9 0 10-18 0v2a3 3 0 003 3h12a3 3 0 003-3z" />
-                </svg>
-                Messages
             </a>
 
             <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
