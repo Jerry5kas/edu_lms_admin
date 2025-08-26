@@ -70,7 +70,7 @@
                         : 'https://via.placeholder.com/150/3B82F6/FFFFFF?text=' . substr(Auth::user()->name ?? 'U', 0, 1) }}"
                      alt="Profile"
                      class="w-10 h-10 rounded-full border-2 border-blue-500" />
-{{--                <img class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" alt="User">--}}
+                {{--                <img class="w-10 h-10 rounded-full border-2 border-blue-500" src="https://via.placeholder.com/150" alt="User">--}}
             </button>
 
             <!-- Dropdown -->
@@ -87,14 +87,14 @@
                         : 'https://via.placeholder.com/150/3B82F6/FFFFFF?text=' . substr(Auth::user()->name ?? 'U', 0, 1) }}"
                          alt="Profile"
                          class="w-10 h-10 rounded-full" />
-{{--                    <img class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" alt="User">--}}
+                    {{--                    <img class="w-10 h-10 rounded-full" src="https://via.placeholder.com/150" alt="User">--}}
                     <div>
                         <h2 class="text-sm font-semibold text-gray-800">
-                                {{ Auth::check() ? Auth::user()->name : 'Guest' }}
-                            </h2>
+                            {{ Auth::check() ? Auth::user()->name : 'Guest' }}
+                        </h2>
                         <p class="text-xs text-gray-500">
 
-                           {{ Auth::user()->email ?? '' }}
+                            {{ Auth::user()->email ?? '' }}
 
 
                         </p>
@@ -111,7 +111,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5a8.25 8.25 0 1115 0" />
                             </svg>
-                           Profile
+                            Profile
                         </a>
                     </li>
                     <li>
@@ -121,7 +121,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.983 13.883a1.905 1.905 0 100-3.81 1.905 1.905 0 000 3.81z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.423 12.667c.036-.22.057-.445.057-.677s-.021-.457-.057-.677l1.505-1.174a.381.381 0 00.092-.493l-1.428-2.474a.381.381 0 00-.478-.162l-1.774.713a6.574 6.574 0 00-1.173-.677l-.27-1.889a.381.381 0 00-.378-.326h-2.856a.381.381 0 00-.378.326l-.27 1.889a6.574 6.574 0 00-1.173.677l-1.774-.713a.381.381 0 00-.478.162l-1.428 2.474a.381.381 0 00.092.493l1.505 1.174c-.036.22-.057.445-.057.677s.021.457.057.677l-1.505 1.174a.381.381 0 00-.092.493l1.428 2.474c.104.18.32.249.478.162l1.774-.713c.367.278.761.51 1.173.677l.27 1.889c.03.184.194.326.378.326h2.856c.184 0 .348-.142.378-.326l.27-1.889c.412-.167.806-.399 1.173-.677l1.774.713c.158.087.374.018.478-.162l1.428-2.474a.381.381 0 00-.092-.493l-1.505-1.174z" />
                             </svg>
-                             Account Settings
+                            Account Settings
                         </a>
                     </li>
 
@@ -150,12 +150,12 @@
                     <form action="{{ route('admin.logout') }}" method="POST" class="inline">
                         @csrf
                         <button type="submit" class="flex items-center px-3 py-3 rounded-b-xl text-sm font-medium text-red-600 hover:bg-red-50 w-full text-left">
-                        <!-- Logout Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-10V5a2 2 0 114 0v1" />
-                        </svg>
-                        Logout
-                    </button>
+                            <!-- Logout Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-10V5a2 2 0 114 0v1" />
+                            </svg>
+                            Logout
+                        </button>
                     </form>
                 </div>
             </div>

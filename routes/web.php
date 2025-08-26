@@ -24,7 +24,22 @@ use App\Http\Controllers\Auth\ProfileController;
 
 //Route::get('/', function () {
 //    return view('welcome');
-//});
+use App\Http\Controllers\SubscriptionPlanController;
+
+Route::get('/notifications', function () {
+    return view('notification.index');
+})->name('notifications.index');
+
+Route::get('/notifications/create', function () {
+    return view('notification.create');
+})->name('notifications.create');
+
+Route::get('/notifications/edit', function () {
+    return view('notification.edit');
+})->name('notifications.edit');
+
+
+Route::resource('/subscriptions', SubscriptionPlanController::class);
 
 Route::get('/', [WebAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [WebAuthController::class, 'login'])->name('login.post');
@@ -74,6 +89,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
+
 
     // Quizzes
     Route::resource('/quizzes', QuizController::class);

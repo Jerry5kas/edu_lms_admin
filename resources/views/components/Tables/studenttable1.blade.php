@@ -1,12 +1,10 @@
-<div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-
 <div class="w-full max-w-7xl bg-white rounded-xl shadow-md p-6" x-data="{ open:false, selected:'Popular' }">
 
     <!-- Header Section -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
         <!-- Breadcrumb -->
         <div class="text-gray-500 text-sm">
-            Home / <span class="text-gray-900 font-medium">Students</span>
+            Home / <span class="text-gray-900 font-medium">Category</span>
         </div>
 
         <!-- Sort & Export -->
@@ -101,5 +99,5 @@
         </div>
     </div>
 </div>
-
+</div>
 </div>
