@@ -133,7 +133,6 @@
                             Lesson Views
                             <span class="ml-auto text-xs text-gray-400">(progress tracking)</span>
                         </a>
-
                         <a href="{{ route('lesson-tracking.example') }}"
                            class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-500">
                             <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"
@@ -144,30 +143,9 @@
                             Integration Guide
                             <span class="ml-auto text-xs text-gray-400">(API docs)</span>
                         </a>
-
-{{--                        <a href="{{ route('quizzes.index') }}"--}}
-{{--                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-500">--}}
-{{--                            <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"--}}
-{{--                                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">--}}
-{{--                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>--}}
-{{--                            </svg>--}}
-{{--                            Quizzes--}}
-{{--                            <span class="ml-auto text-xs text-gray-400">(assessment)</span>--}}
-{{--                        </a>--}}
-
-{{--                        <a href="{{ route('media.index') }}"--}}
-{{--                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-500">--}}
-{{--                            <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"--}}
-{{--                                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">--}}
-{{--                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>--}}
-{{--                            </svg>--}}
-{{--                            Media Library--}}
-{{--                            <span class="ml-auto text-xs text-gray-400">(files)</span>--}}
-{{--                        </a>--}}
                     </div>
                 </div>
             </div>
-
             <a href="{{ route('quizzes.index') }}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -183,22 +161,79 @@
                 </svg>
                 Media Library
             </a>
-            <a href="{{ route('payments.index') }}"
-               class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4zM4 6h16M4 10h16M4 14h16M4 18h16" />
-                </svg>
-                Payments
-            </a>
-            <a href="{{ route('subscriptions.index')}}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
-                </svg>
-                Subscription
-            </a>
+            <!-- Order Management Dropdown -->
+            <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open"
+                        class="flex items-center w-full px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-200">
+                    <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Order Management
+                    <svg :class="open ? 'rotate-180' : 'rotate-0'"
+                         class="h-4 w-4 ml-auto transform transition-transform text-gray-500"
+                         xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
 
+                <div x-show="open" @click.away="open = false" x-transition
+                     class="absolute left-0 mt-2 w-56 rounded-lg shadow-lg bg-white border border-gray-300 z-20">
+                    <div class="py-2">
+                        <a href="{{ route('orders.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Orders
+                        </a>
+
+                        <a href="{{ route('payments.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4zM4 6h16M4 10h16M4 14h16M4 18h16" />
+                            </svg>
+                            Payments
+                        </a>
+
+                        <a href="{{ route('refunds.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                            </svg>
+                            Refunds
+                        </a>
+
+                        <a href="{{ route('invoices.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Invoices
+                        </a>
+
+                        <a href="{{ route('webhooks.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Webhooks
+                        </a>
+                    </div>
+                </div>
+            </div>
             <!-- Other Nav Links (no changes) -->
             <a href="/notifications" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
