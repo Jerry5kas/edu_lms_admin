@@ -1,16 +1,24 @@
 <?php
-use App\Http\Controllers\Auth\WebAuthController;
+
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\SocialAuthController;
-use App\Http\Controllers\Course\CourseController;
+use App\Http\Controllers\Auth\WebAuthController;
 use App\Http\Controllers\Course\CategoryController;
-use App\Http\Controllers\Course\TagController;
+use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Course\CourseSectionController;
+use App\Http\Controllers\Course\EnrollmentController;
 use App\Http\Controllers\Course\LessonController;
 use App\Http\Controllers\Course\LessonViewController;
-use App\Http\Controllers\Course\QuizController;
 use App\Http\Controllers\Course\MediaController;
+use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Order\PaymentController;
+use App\Http\Controllers\Order\RefundController;
+use App\Http\Controllers\Order\InvoiceController;
+use App\Http\Controllers\Order\WebhookController;
+use App\Http\Controllers\Course\QuizController;
+use App\Http\Controllers\Course\TagController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,11 +105,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lessons/{lesson}/quizzes', [QuizController::class, 'getQuizzesForLesson'])->name('lessons.quizzes');
 
     // Media Management
-    Route::resource('/media', MediaController::class);
-    Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
-    Route::get('/media/get-media', [MediaController::class, 'getMedia'])->name('media.get-media');
-    Route::post('/media/get-by-path', [MediaController::class, 'getByPath'])->name('media.get-by-path');
-    Route::post('/media/bulk-delete', [MediaController::class, 'bulkDelete'])->name('media.bulk-delete');
+Route::resource('/media', MediaController::class);
+Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
+Route::get('/media/get-media', [MediaController::class, 'getMedia'])->name('media.get-media');
+Route::post('/media/get-by-path', [MediaController::class, 'getByPath'])->name('media.get-by-path');
+Route::post('/media/bulk-delete', [MediaController::class, 'bulkDelete'])->name('media.bulk-delete');
+
+// Orders & Payments Management (Admin Panel)
+Route::resource('/orders', OrderController::class)->except(['create', 'store']);
+Route::patch('/orders/{order}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+
+Route::resource('/payments', PaymentController::class)->except(['create', 'store']);
+
+// Refunds Management
+Route::resource('/refunds', RefundController::class);
+Route::patch('/refunds/{refund}/process', [RefundController::class, 'process'])->name('refunds.process');
+
+// Invoices Management
+Route::resource('/invoices', InvoiceController::class);
+Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoices.download');
+Route::patch('/invoices/{invoice}/regenerate-pdf', [InvoiceController::class, 'regeneratePDF'])->name('invoices.regenerate-pdf');
+
+// Webhooks Management
+Route::resource('/webhooks', WebhookController::class)->only(['index', 'show', 'destroy']);
+Route::patch('/webhooks/{webhook}/process', [WebhookController::class, 'process'])->name('webhooks.process');
+Route::patch('/webhooks/{webhook}/retry', [WebhookController::class, 'retry'])->name('webhooks.retry');
+
+// Webhook endpoints (no auth required)
+Route::post('/webhooks/razorpay', [WebhookController::class, 'handleRazorpayWebhook'])->name('webhooks.razorpay');
     Route::post('/logout', [WebAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
 });
@@ -113,10 +144,6 @@ Route::get('/test', function () {
     return view('test');
 });
 
-use App\Http\Controllers\PaymentController;
-
-Route::resource('payments', PaymentController::class);
-use App\Http\Controllers\EnrollmentController;
 
 Route::middleware(['auth'])->group(function () {
     // Enroll a user into a course

@@ -34,4 +34,16 @@ Route::post('/login', [AuthController::class, 'login']);
 // Protected routes (requires Sanctum token)
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    
+    // Order Management API
+    Route::prefix('orders')->group(function () {
+        Route::get('/my-orders', [\App\Http\Controllers\Api\OrderApiController::class, 'myOrders']);
+        Route::get('/statistics', [\App\Http\Controllers\Api\OrderApiController::class, 'statistics']);
+        Route::get('/available-courses', [\App\Http\Controllers\Api\OrderApiController::class, 'availableCourses']);
+        Route::post('/', [\App\Http\Controllers\Api\OrderApiController::class, 'store']);
+        Route::get('/{order}', [\App\Http\Controllers\Api\OrderApiController::class, 'show']);
+        Route::patch('/{order}/cancel', [\App\Http\Controllers\Api\OrderApiController::class, 'cancel']);
+        Route::get('/{order}/payment-link', [\App\Http\Controllers\Api\OrderApiController::class, 'getPaymentLink']);
+        Route::post('/verify-payment', [\App\Http\Controllers\Api\OrderApiController::class, 'verifyPayment']);
+    });
 });
