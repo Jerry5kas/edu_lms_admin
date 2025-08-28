@@ -8,22 +8,22 @@
             </svg>
             <span class="text-gray-800 font-medium">{{ $course->title }}</span>
         </div>
-{{--        <div class="mt-4 flex justify-end">--}}
-{{--            @if(auth()->check())--}}
-{{--                <form action="{{ route('courses.enroll', $course->id) }}" method="POST">--}}
-{{--                    @csrf--}}
-{{--                    <button type="submit"--}}
-{{--                            class="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">--}}
-{{--                        Enroll Now--}}
-{{--                    </button>--}}
-{{--                </form>--}}
-{{--            @else--}}
-{{--                <a href="{{ route('login') }}"--}}
-{{--                   class="px-4 py-2 bg-gray-600 text-white rounded-lg">--}}
-{{--                    Login to Enroll--}}
-{{--                </a>--}}
-{{--            @endif--}}
-{{--        </div>--}}
+        <div class="mt-4 flex justify-end">
+            @if(auth()->check())
+                <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
+                    @csrf
+                    <button type="submit"
+                            class="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                        Enroll Now
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}"
+                   class="px-4 py-2 bg-gray-600 text-white rounded-lg">
+                    Login to Enroll
+                </a>
+            @endif
+        </div>
 
 
         <!-- Course Header -->

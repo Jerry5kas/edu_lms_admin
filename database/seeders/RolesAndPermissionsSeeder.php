@@ -14,89 +14,35 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         /*
-         * Define comprehensive permissions
-         * Grouped logically: Users, Courses, Enrollments, Payments, Admin, System, Roles & Permissions
+         * Define baseline permissions
+         * Grouped logically: Users, Courses, Enrollments, Payments, Admin, System
          */
         $permissions = [
             // User management
-            'users.view',
-            'users.create',
-            'users.edit',
-            'users.delete',
+            'user.view',
+            'user.create',
+            'user.update',
+            'user.delete',
 
             // Course management
-            'courses.view',
-            'courses.create',
-            'courses.edit',
-            'courses.delete',
-            'courses.publish',
-            'courses.unpublish',
-
-            // Course sections
-            'sections.view',
-            'sections.create',
-            'sections.edit',
-            'sections.delete',
-
-            // Lessons
-            'lessons.view',
-            'lessons.create',
-            'lessons.edit',
-            'lessons.delete',
-            'lessons.publish',
-            'lessons.unpublish',
+            'course.view',
+            'course.create',
+            'course.update',
+            'course.delete',
+            'lesson.manage',
 
             // Enrollment management
-            'enrollments.view',
-            'enrollments.manage',
+            'enrollment.view',
+            'enrollment.manage',
 
             // Payments & orders
-            'orders.view',
-            'orders.manage',
-            'orders.cancel',
-            'payments.view',
-            'payments.manage',
-            'refunds.view',
-            'refunds.process',
-            'invoices.view',
-            'invoices.download',
-
-            // Media management
-            'media.view',
-            'media.upload',
-            'media.delete',
-
-            // Quizzes
-            'quizzes.view',
-            'quizzes.create',
-            'quizzes.edit',
-            'quizzes.delete',
-
-            // Categories & Tags
-            'categories.view',
-            'categories.create',
-            'categories.edit',
-            'categories.delete',
-            'tags.view',
-            'tags.create',
-            'tags.edit',
-            'tags.delete',
-
-            // Roles & Permissions management
-            'roles.view',
-            'roles.create',
-            'roles.edit',
-            'roles.delete',
-            'roles.sync-permissions',
-            'permissions.view',
-            'permissions.create',
-            'permissions.edit',
-            'permissions.delete',
+            'order.view',
+            'order.manage',
+            'payment.refund',
 
             // Admin utilities
-            'announcements.send',
+            'announcement.send',
             'settings.manage',
-            'dashboard.access',
 
             // System & GDPR
             'gdpr.export',
@@ -113,69 +59,19 @@ class RolesAndPermissionsSeeder extends Seeder
          * Define roles and assign permissions
          */
         $roles = [
-            'Super Admin' => $permissions, // full access to everything
-            'Admin' => array_filter($permissions, function($perm) {
-                // Admin gets everything except Super Admin specific permissions
-                return !in_array($perm, ['roles.delete', 'permissions.delete']);
-            }),
+            'Admin' => $permissions, // full access
             'Instructor' => [
-                'courses.view',
-                'courses.create',
-                'courses.edit',
-                'courses.publish',
-                'courses.unpublish',
-                'sections.view',
-                'sections.create',
-                'sections.edit',
-                'sections.delete',
-                'lessons.view',
-                'lessons.create',
-                'lessons.edit',
-                'lessons.delete',
-                'lessons.publish',
-                'lessons.unpublish',
-                'media.view',
-                'media.upload',
-                'quizzes.view',
-                'quizzes.create',
-                'quizzes.edit',
-                'quizzes.delete',
-                'categories.view',
-                'tags.view',
-                'enrollments.view',
-                'dashboard.access',
+                'course.view',
+                'course.create',
+                'course.update',
+                'course.delete',
+                'lesson.manage',
+                'enrollment.view',
             ],
-            'Manager' => [
-                'users.view',
-                'courses.view',
-                'courses.edit',
-                'courses.publish',
-                'courses.unpublish',
-                'sections.view',
-                'sections.edit',
-                'lessons.view',
-                'lessons.edit',
-                'lessons.publish',
-                'lessons.unpublish',
-                'enrollments.view',
-                'enrollments.manage',
-                'orders.view',
-                'orders.manage',
-                'payments.view',
-                'refunds.view',
-                'refunds.process',
-                'invoices.view',
-                'invoices.download',
-                'media.view',
-                'quizzes.view',
-                'quizzes.edit',
-                'categories.view',
-                'categories.edit',
-                'tags.view',
-                'tags.edit',
-                'dashboard.access',
+            'Student' => [
+                'course.view',
+                'enrollment.view',
             ],
-
         ];
 
         foreach ($roles as $roleName => $perms) {

@@ -1,9 +1,9 @@
 <div class="min-h-screen" x-data="{ open: false }">
-    <!-- Mobile overlay -->
+<!-- Mobile overlay -->
 
-    <div x-show="open" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" @click="open=false"></div>
+<div x-show="open" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" @click="open=false"></div>
 
-    <!-- Sidebar -->
+<!-- Sidebar -->
 
     <aside
         class="fixed z-50 lg:z-0 inset-y-0 left-0 w-64 bg-white shadow-md lg:static transform transition-transform duration-200 ease-in-out min-h-screen"
@@ -11,9 +11,8 @@
 
         <!-- Logo -->
         <div class="flex items-center px-6 py-4 border-b">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" viewBox="0 0 24 24"
-                 fill="currentColor">
-                <path d="M12 2l9 4.5v3c0 5.25-3.75 10.5-9 12-5.25-1.5-9-6.75-9-12v-3L12 2z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l9 4.5v3c0 5.25-3.75 10.5-9 12-5.25-1.5-9-6.75-9-12v-3L12 2z" />
             </svg>
             <span class="ml-2 font-bold text-xl">Edmate</span>
         </div>
@@ -150,8 +149,7 @@
             <a href="{{ route('quizzes.index') }}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
                 Quizzes
             </a>
@@ -159,8 +157,7 @@
             <a href="{{ route('media.index') }}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                 </svg>
                 Media Library
             </a>
@@ -171,7 +168,7 @@
                     <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                     Order Management
                     <svg :class="open ? 'rotate-180' : 'rotate-0'"
@@ -190,7 +187,7 @@
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
                             Orders
                         </a>
@@ -200,7 +197,7 @@
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4zM4 6h16M4 10h16M4 14h16M4 18h16"/>
+                                      d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4zM4 6h16M4 10h16M4 14h16M4 18h16" />
                             </svg>
                             Payments
                         </a>
@@ -210,7 +207,7 @@
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+                                      d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                             </svg>
                             Refunds
                         </a>
@@ -220,7 +217,7 @@
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             Invoices
                         </a>
@@ -230,7 +227,7 @@
                             <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                      d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                             Webhooks
                         </a>
@@ -242,151 +239,88 @@
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
                 </svg>
-                notification
+              notification
             </a>
-            <!-- Roles & Permissions Dropdown -->
-            @if(auth()->check() && (auth()->user()->hasRole('Super Admin') || auth()->user()->hasRole('Admin')))
-                <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open"
-                            class="flex items-center w-full px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-200">
-                        <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                        Roles & Permissions
-                        <svg :class="open ? 'rotate-180' : 'rotate-0'"
-                             class="h-4 w-4 ml-auto transform transition-transform text-gray-500"
-                             xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
 
-                    <div x-show="open" @click.away="open = false" x-transition
-                         class="absolute left-0 mt-2 w-56 rounded-lg shadow-lg bg-white border border-gray-300 z-20">
-                        <div class="py-2">
-                            @can('roles.view')
-                                <a href="{{ route('admin.roles.index') }}"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                                    <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                         fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M17 20h22v-2a4 4 0 00-4-4H5a2 2 0 00-2 2v2"/>
-                                    </svg>
-                                    Manage Roles
-                                </a>
-                            @endcan
+            <!-- keep your other links exactly the same as before... --><a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zm-6 8v-6m0 6H9a2 2 0 01-2-2v-4h10v4a2 2 0 01-2 2h-2z" />
+                </svg>
+                Assignments
+            </a>
 
-                            @can('permissions.view')
-                                <a href="{{ route('admin.permissions.index') }}"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                                    <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                         fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                    </svg>
-                                    Manage Permissions
-                                </a>
-                            @endcan
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8" />
+                </svg>
+                Mentors
+            </a>
 
-                            @can('users.view')
-                                <a href="{{ route('admin.users.index') }}"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                                    <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                         fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
-                                    </svg>
-                                    User Management
-                                </a>
-                            @endcan
-                        </div>
-                    </div>
-                </div>
-            @endif
-                <!-- keep your other links exactly the same as before... --><a href="#"
-                                                                               class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4h10zm-6 8v-6m0 6H9a2 2 0 01-2-2v-4h10v4a2 2 0 01-2 2h-2z"/>
-                    </svg>
-                    Assignments
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 17v-2h6v2H9zm-4 4h14v-2H5v2zm0-4h14v-2H5v2z" />
+                </svg>
+                Resources
+            </a>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8"/>
-                    </svg>
-                    Mentors
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M11 11V7a4 4 0 118 0v4m-4 4h-1a3 3 0 00-3 3v4h8v-4a3 3 0 00-3-3h-1z" />
+                </svg>
+                Analytics
+            </a>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 17v-2h6v2H9zm-4 4h14v-2H5v2zm0-4h14v-2H5v2z"/>
-                    </svg>
-                    Resources
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 17l4 4 4-4m0-5a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Events
+            </a>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M11 11V7a4 4 0 118 0v4m-4 4h-1a3 3 0 00-3 3v4h8v-4a3 3 0 00-3-3h-1z"/>
-                    </svg>
-                    Analytics
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 20h9M3 20h9m0 0V4" />
+                </svg>
+                Library
+            </a>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 17l4 4 4-4m0-5a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    Events
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4z" />
+                    <path d="M12 14v6" />
+                </svg>
+                Pricing
+            </a>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 20h9M3 20h9m0 0V4"/>
-                    </svg>
-                    Library
-                </a>
+            <!-- Divider -->
+            <div class="border-t my-4"></div>
 
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 8c-1.105 0-2 .895-2 2s.895 2 2 2a2 2 0 100-4z"/>
-                        <path d="M12 14v6"/>
-                    </svg>
-                    Pricing
-                </a>
+            <!-- Profile -->
+            <a href="{{ route('auth.profile.edit') }}" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                Profile
+            </a>
 
-                <!-- Divider -->
-                <div class="border-t my-4"></div>
+            <!-- Settings -->
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                Account Settings
+            </a>
 
-                <!-- Profile -->
-                <a href="{{ route('auth.profile.edit') }}"
-                   class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                    </svg>
-                    Profile
-                </a>
-
-                <!-- Settings -->
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 6v6l4 2"/>
-                    </svg>
-                    Account Settings
-                </a>
-
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
-                    <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                    Authentication
-                </a>
+            <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                Authentication
+            </a>
         </nav>
+
+
+
         <!-- Upgrade Box -->
         <div class="px-4 py-6 mt-auto">
             <div class="bg-blue-50 rounded-xl p-4 text-center">
