@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('auth.profile.update');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/courses', CourseController::class);
     Route::patch('/courses/{course}/publish', [CourseController::class, 'publish'])->name('courses.publish');
     Route::patch('/courses/{course}/unpublish', [CourseController::class, 'unpublish'])->name('courses.unpublish');
@@ -136,6 +136,7 @@ Route::patch('/webhooks/{webhook}/retry', [WebhookController::class, 'retry'])->
 Route::post('/webhooks/razorpay', [WebhookController::class, 'handleRazorpayWebhook'])->name('webhooks.razorpay');
     Route::post('/logout', [WebAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/dashboard', [WebAuthController::class, 'dashboard'])->name('dashboard.index');
+    Route::get('/admin/dashboard', [WebAuthController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
@@ -148,7 +149,7 @@ Route::get('/test', function () {
 // Admin Routes for Roles & Permissions Management
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'role:Super Admin|Admin'])
+    ->middleware(['auth', 'admin'])
     ->group(function () {
         // Roles Management
         Route::resource('roles', RoleController::class);

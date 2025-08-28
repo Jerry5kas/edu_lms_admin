@@ -293,6 +293,71 @@
                 Pricing
             </a>
 
+            <!-- Admin Management Section (Only for Super Admin and Admin) -->
+            @if(auth()->check() && (auth()->user()->hasRole('Super Admin') || auth()->user()->hasRole('Admin')))
+            <div class="border-t my-4"></div>
+            
+            <!-- Admin Management Dropdown -->
+            <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open"
+                        class="flex items-center w-full px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-200">
+                    <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    Admin Management
+                    <svg :class="open ? 'rotate-180' : 'rotate-0'"
+                         class="h-4 w-4 ml-auto transform transition-transform text-gray-500"
+                         xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+
+                <div x-show="open" @click.away="open = false" x-transition
+                     class="absolute left-0 mt-2 w-56 rounded-lg shadow-lg bg-white border border-gray-100 z-20">
+                    <div class="py-2">
+                        @can('roles.view')
+                        <a href="{{ route('admin.roles.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17 20h5v-2a4 4 0 00-5-4V4a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h8" />
+                            </svg>
+                            Roles Management
+                        </a>
+                        @endcan
+
+                        @can('permissions.view')
+                        <a href="{{ route('admin.permissions.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Permissions Management
+                        </a>
+                        @endcan
+
+                        @can('users.view')
+                        <a href="{{ route('admin.users.index') }}"
+                           class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
+                            <svg class="h-5 w-5 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                            </svg>
+                            User Management
+                        </a>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <!-- Divider -->
             <div class="border-t my-4"></div>
 

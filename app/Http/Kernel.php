@@ -67,6 +67,11 @@ class Kernel extends HttpKernel
         'api.client' => \App\Http\Middleware\ApiClientAuthMiddleware::class,
         'rate.limit' => \App\Http\Middleware\RateLimitMiddleware::class,
         
+        // Role-based Authentication Middleware
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'role.check' => \App\Http\Middleware\RoleMiddleware::class,
+        'permission.check' => \App\Http\Middleware\PermissionMiddleware::class,
+        
         // Spatie Permission Middleware
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,

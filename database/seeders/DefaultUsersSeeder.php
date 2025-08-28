@@ -14,7 +14,7 @@ class DefaultUsersSeeder extends Seeder
     {
         // Ensure roles exist (should be created by RolesAndPermissionsSeeder)
         $roles = Role::pluck('name')->toArray();
-        $required = ['Admin','Instructor','Student'];
+        $required = ['Admin','Instructor','Manager'];
 
         foreach ($required as $role) {
             if (! in_array($role, $roles)) {
@@ -51,23 +51,23 @@ class DefaultUsersSeeder extends Seeder
         );
         $instructor->assignRole('Instructor');
 
-        // Default Student
-        $student = User::firstOrCreate(
-            ['email' => 'all courses@edulearn.local'],
+        // Default Manager
+        $manager = User::firstOrCreate(
+            ['email' => 'manager@edulearn.local'],
             [
                 'uuid' => Str::uuid(),
-                'name' => 'Demo Student',
+                'name' => 'Demo Manager',
                 'password' => Hash::make('password'), // ⚠️ change in production
                 'locale' => 'de_DE',
                 'timezone' => 'Europe/Berlin',
                 'country_code' => 'DE',
             ]
         );
-        $student->assignRole('Student');
+        $manager->assignRole('Manager');
 
         $this->command->info("✅ Default users created:");
         $this->command->info("   Admin: dashboard@edulearn.local / password");
         $this->command->info("   Instructor: instructor@edulearn.local / password");
-        $this->command->info("   Student: all courses@edulearn.local / password");
+        $this->command->info("   Manager: manager@edulearn.local / password");
     }
 }
