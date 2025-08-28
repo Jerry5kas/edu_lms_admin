@@ -17,6 +17,10 @@ use App\Http\Controllers\Order\InvoiceController;
 use App\Http\Controllers\Order\WebhookController;
 use App\Http\Controllers\Course\QuizController;
 use App\Http\Controllers\Course\TagController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\UserAccessController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +49,6 @@ Route::get('/notifications/create', function () {
 Route::get('/notifications/edit', function () {
     return view('notification.edit');
 })->name('notifications.edit');
-
-
-Route::resource('/subscriptions', SubscriptionPlanController::class);
 
 Route::get('/', [WebAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [WebAuthController::class, 'login'])->name('login.post');
@@ -122,7 +123,7 @@ Route::resource('/refunds', RefundController::class);
 Route::patch('/refunds/{refund}/process', [RefundController::class, 'process'])->name('refunds.process');
 
 // Invoices Management
-Route::resource('/invoices', InvoiceController::class);
+Route::resource('/invoices', InvoiceController::class)->except(['create', 'store']);
 Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoices.download');
 Route::patch('/invoices/{invoice}/regenerate-pdf', [InvoiceController::class, 'regeneratePDF'])->name('invoices.regenerate-pdf');
 
@@ -144,11 +145,22 @@ Route::get('/test', function () {
     return view('test');
 });
 
-
-Route::middleware(['auth'])->group(function () {
-    // Enroll a user into a course
-    Route::post('/courses/{course}/enroll', [EnrollmentController::class, 'store'])->name('courses.enroll');
-
-    // List my enrolled courses
-    Route::get('/my-courses', [EnrollmentController::class, 'index'])->name('my.courses');
-});
+// Admin Routes for Roles & Permissions Management
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'role:Super Admin|Admin'])
+    ->group(function () {
+        // Roles Management
+        Route::resource('roles', RoleController::class);
+        
+        // Permissions Management
+        Route::resource('permissions', PermissionController::class)->except(['show']);
+        
+        // User Management
+        Route::resource('users', UserController::class);
+        Route::post('users/bulk-delete', [UserController::class, 'bulkDelete'])->name('users.bulk-delete');
+        
+        // User Access Management
+        Route::get('users/{user}/access', [UserAccessController::class, 'edit'])->name('users.access.edit');
+        Route::put('users/{user}/access', [UserAccessController::class, 'update'])->name('users.access.update');
+    });
