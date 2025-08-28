@@ -66,5 +66,10 @@ class Kernel extends HttpKernel
         // ✅ Custom
         'api.client' => \App\Http\Middleware\ApiClientAuthMiddleware::class,
         'rate.limit' => \App\Http\Middleware\RateLimitMiddleware::class,
+        
+        // Spatie Permission Middleware
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
     ];
 }
