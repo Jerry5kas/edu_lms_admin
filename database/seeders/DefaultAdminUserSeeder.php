@@ -10,11 +10,11 @@ class DefaultAdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ensure dashboard role exists (from RolesAndPermissionsSeeder)
-        $adminRole = \Spatie\Permission\Models\Role::where('name', 'Admin')->first();
+        // Ensure Super Admin role exists (from RolesAndPermissionsSeeder)
+        $superAdminRole = \Spatie\Permission\Models\Role::where('name', 'Super Admin')->first();
 
-        if (! $adminRole) {
-            $this->command->warn('Admin role not found. Run RolesAndPermissionsSeeder first.');
+        if (! $superAdminRole) {
+            $this->command->warn('Super Admin role not found. Run RolesAndPermissionsSeeder first.');
             return;
         }
 
@@ -32,9 +32,9 @@ class DefaultAdminUserSeeder extends Seeder
             ]
         );
 
-        // Assign Admin role
-        if (! $admin->hasRole('Admin')) {
-            $admin->assignRole('Admin');
+        // Assign Super Admin role
+        if (! $admin->hasRole('Super Admin')) {
+            $admin->assignRole('Super Admin');
         }
 
         $this->command->info("Default Admin user created: {$admin->email} / password");

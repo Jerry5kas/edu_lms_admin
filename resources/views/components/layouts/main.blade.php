@@ -37,6 +37,7 @@
 
         <!-- Body -->
         <main class="flex-1 overflow-y-auto p-6">
+            <x-admin-nav />
             {{--            @include('dashboard.auth.dashboard.components.main')--}}
             {{ $slot }}
         </main>
