@@ -263,6 +263,7 @@
                 Resources
             </a>
 
+
             <a href="#" class="flex items-center px-3 py-2 rounded-lg hover:bg-blue-50">
                 <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path d="M11 11V7a4 4 0 118 0v4m-4 4h-1a3 3 0 00-3 3v4h8v-4a3 3 0 00-3-3h-1z" />
